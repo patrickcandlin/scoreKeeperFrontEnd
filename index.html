@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="app.css">
+    <script src="app.js"></script>
+    <title>Match Maker</title>
+</head>
+<body>
+    <header>  
+        <div class="heading-container">
+            <H1>Let's Make a Match</H1>
+            <div class="greeting"></div>
+        </div>  
+        <nav>
+            <button id='login-button'>Login</button>
+            <button id='sign-up'>Sign Up</button>
+            <button id='request'>Request a Match</button>
+        </nav>
+    </header>
+        <div class="create-account-container">
+            <form id="create-player">
+                <label>Email:</label>
+                <input type="text" name="email" placeholder="Email">
+                <label>First Name:</label>
+                <input type="text" name="first_name" placeholder="First Name">
+                <label>Last Name:</label>
+                <input type="text" name="last_name" placeholder="Last Name">
+                <label>Birth Date:</label>
+                <input type="date" name="birth_date">
+                <p>
+                    <label>Rating:</label>
+                    <input type="radio" name="player_ability_rating" value="2.5">2.5
+                    <input type="radio" name="player_ability_rating" value="3.0">3.0
+                    <input type="radio" name="player_ability_rating" value="3.5">3.5
+                    <input type="radio" name="player_ability_rating" value="4.0">4.0
+                    <input type="radio" name="player_ability_rating" value="4.5">4.5
+                    <input type="radio" name="player_ability_rating" value="5.0">5.0
+                </p>
+                <p>
+                    <label>Sex:</label>
+                    <input type="radio" name="sex" value="Female">F
+                    <input type="radio" name="sex" value="Male">M
+                </p>
+                <input type="submit" value="SUBMIT">
+            </form>
+        </div>
+        <div class="log-in-container">
+            <form id='log-in-form'>
+                <label>Email:</label>
+                <input type="text" name="email" placeholder="Email">
+                <input type="submit" value="Log in">
+            </form>
+        </div>
+        <div class="request-match-container">
+            <form id='request-match-form'>
+                <label>Match Description:</label>
+                <input type="text" name="discription" placeholder="Smack Talk Here!">
+                <label>Match Time:</label>
+                <input type="datetime-local" name="match_time">
+                <input type="hidden" name="completed" value="false">
+                <input type="hidden" name="score" value="">
+                <input type="submit" value="Request Match">
+            </form>
+        </div>
+    <main>
+        <h2>Available Matches:</h2>
+        <section id='requested-matches'>
+                <div class=”media”>
+                  <img src="tennisCourt.png">
+                </div>
+        </section>
+        <h2>My Matches:</h2>
+        <section id='player-matches'>
+            <div class=”media”>
+                    <img src="tennisCourt.png">      
+            </div>
+            <div class=”media”>
+                    <img src="tennisCourt.png">      
+            </div>
+            <div class=”media”>
+                    <img src="tennisCourt.png">      
+            </div>
+            <div class='my_matches'>
+
+            </div>
+        </section>
+    </main>
+    
+</body>
+</html>
