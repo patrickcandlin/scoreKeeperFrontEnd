@@ -65,27 +65,24 @@
                 <input type="submit" value="Request Match">
             </form>
         </div>
+        <div class="edit-match-container">
+                <form id='edit-match-form'>
+                    <input type="hidden" name="match_id" value="">
+                    <label>Match Description:</label>
+                    <input type="text" name="discription" placeholder="Smack Talk Here!">
+                    <label>Match Completed?</label>
+                    <input type="text" name="completed" placeholder="type true or false">
+                    <label>Score:</label>
+                    <input type="text" name="score" value="">
+                    <input type="submit" value="Record Changes">
+                </form>
+        </div>
     <main>
+        <h2>My Matches:</h2> 
+        <section id='player-matches'>
+        </section>
         <h2>Available Matches:</h2>
         <section id='requested-matches'>
-                <div class=”media”>
-                  <img src="tennisCourt.png">
-                </div>
-        </section>
-        <h2>My Matches:</h2>
-        <section id='player-matches'>
-            <div class=”media”>
-                    <img src="tennisCourt.png">      
-            </div>
-            <div class=”media”>
-                    <img src="tennisCourt.png">      
-            </div>
-            <div class=”media”>
-                    <img src="tennisCourt.png">      
-            </div>
-            <div class='my_matches'>
-
-            </div>
         </section>
     </main>
     
