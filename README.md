@@ -12,7 +12,7 @@ Fork and clone the above repo and run:
 2. `rails db:migrate`
 3. `rails s`
 
-Once this is done the app should be fully functional.
+Once this is done the Match Maker will be fully functional!
 
 ## Demo
 
