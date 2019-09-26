@@ -1,2 +1,2 @@
 # scoreKeeperFrontEnd
-![](https://gfycat.com/impressiveregalkrill)
+https://gfycat.com/impressiveregalkrill
