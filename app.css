@@ -124,7 +124,6 @@ section img {
  
 section#player-matches {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
 }
 section div{

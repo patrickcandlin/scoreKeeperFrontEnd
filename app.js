@@ -14,16 +14,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const requestedMatchesContainer = document.querySelector('#requested-matches')
     const currentLogInMatches = document.querySelector('#player-matches')
     const editMatchForm = document.querySelector('#edit-match-form')
-    
+    // display all matches were only one player realated to the match
     fetch(baseUrl+matchesUrl)
         .then(parseJson)
         .then(getRequestedMatches)
 
         
-        
+    //event listener for sending post request create new user     
     createPlayerForm.addEventListener('submit', event => {
         event.preventDefault()
         const playerDetails = new FormData(createPlayerForm)
+        //Post request for Creating new player
         createNewPlayer(playerDetails)
         createPlayerForm.reset()
         createPlayerForm.classList.toggle('open')
@@ -124,7 +125,10 @@ function getUserMatches(playerLogin){
                 fetch(baseUrl+playerMatchesUrl+`/${event.target.parentNode.dataset.playerMatchId}`, {
                     method: 'DELETE',
                     headers: {'Content-Type': 'application/json'},
-                })
+                }).then(fetch(baseUrl+matchesUrl)
+                            .then(parseJson)
+                            .then(getRequestedMatches)
+                        )
             })
             updateButton.addEventListener('click', event => {
                 createPlayerForm.classList.remove('open')
@@ -151,7 +155,8 @@ function joinMatch(event){
             player_id: parseInt(greetingBox.dataset.playerId)
             })
         }
-        ).then(
+        ).then(response => console.log(response))
+        .then(
             fetch(baseUrl+playersURL+`/${playerId}`)
             .then(parseJson)
             .then(json => getUserMatches(json.data))
@@ -207,7 +212,6 @@ function createRequestedMatchCard(request) {
     const aMatchToJoin = document.createElement('div')
     const joinButton = document.createElement('button')
     joinButton.innerText = "Join"
-    joinButton.class = "join"
     joinButton.addEventListener('click', event => joinMatch(event))
     aMatchToJoin.innerText = ` ${request.attributes.players[0].first_name} - ${request.attributes.discription} `
     aMatchToJoin.prepend(joinButton)
