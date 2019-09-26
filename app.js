@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         
     createPlayerForm.addEventListener('submit', event => {
         event.preventDefault()
-        const formData = new FormData(createPlayerForm)
-        createNewPlayer(formData)
+        const playerDetails = new FormData(createPlayerForm)
+        createNewPlayer(playerDetails)
         createPlayerForm.reset()
         createPlayerForm.classList.toggle('open')
     })
@@ -105,12 +105,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
         requestedMatchArray.forEach(request => {
             createRequestedMatchCard(request)        
         })
-
-}
+    }
 
 function getUserMatches(playerLogin){
     currentLogInMatches.innerHTML = ""
-     playerLogin.attributes.matches.forEach(match => {
+    playerLogin.attributes.matches.forEach(match => {
             const playerMatch = document.createElement('div')
             const deleteButton = document.createElement('button')
             const updateButton = document.createElement('button')
@@ -140,9 +139,10 @@ function getUserMatches(playerLogin){
           } 
       })
     })
-    }
+}
 
 function joinMatch(event){
+    const playerId = greetingBox.dataset.playerId
     fetch(baseUrl+playerMatchesUrl, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -151,6 +151,10 @@ function joinMatch(event){
             player_id: parseInt(greetingBox.dataset.playerId)
             })
         }
+        ).then(
+            fetch(baseUrl+playersURL+`/${playerId}`)
+            .then(parseJson)
+            .then(json => getUserMatches(json.data))
         )
     event.target.parentNode.remove()
 }
@@ -159,13 +163,13 @@ function createNewPlayer(playerDetails){
     fetch(baseUrl+playersURL, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},  
-        body: JSON.stringify({
+        body: JSON.stringify( {player: {
             email: playerDetails.get('email'),
             first_name: playerDetails.get('first_name'),
             last_name: playerDetails.get('last_name'),
             birth_date: playerDetails.get('birth_date'),
             player_ability_rating: playerDetails.get('player_ability_rating'),
-            sex: playerDetails.get('sex')}
+            sex: playerDetails.get('sex')}}
             )}
     )
     .then(parseJson)
